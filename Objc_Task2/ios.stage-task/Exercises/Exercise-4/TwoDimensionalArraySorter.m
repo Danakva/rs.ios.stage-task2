@@ -15,13 +15,14 @@
             [stringsArray addObjectsFromArray:subArray];
         }
     }
-    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:nil ascending:YES];
+    NSSortDescriptor *ascSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:nil ascending:YES];
+    NSSortDescriptor *desSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:nil ascending:NO];
     if (numbersArray.count == 0) {
-        return [stringsArray sortedArrayUsingDescriptors:@[sortDescriptor]];
+        return [stringsArray sortedArrayUsingDescriptors:@[ascSortDescriptor]];
     } else if (stringsArray.count == 0) {
-        return [numbersArray sortedArrayUsingDescriptors:@[sortDescriptor]];
+        return [numbersArray sortedArrayUsingDescriptors:@[ascSortDescriptor]];
     } else {
-        return [NSArray arrayWithObjects:[numbersArray sortedArrayUsingDescriptors:@[sortDescriptor]], [stringsArray sortedArrayUsingDescriptors:@[sortDescriptor]], nil];
+        return [NSArray arrayWithObjects:[numbersArray sortedArrayUsingDescriptors:@[ascSortDescriptor]], [stringsArray sortedArrayUsingDescriptors:@[desSortDescriptor]], nil];
     }
 }
 
